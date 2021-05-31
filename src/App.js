@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Categories from './components/Categories/Categories';
+import OtherPetDetails from './components/Pet/OtherPetDetails';
+
 import './App.css';
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
         <Switch>
             <Route path="/" exact component={Categories}/>
             <Route path="/categories/:category" component={Categories}/>
+            <Route path="/pets/:petId" component={OtherPetDetails}/>
         </Switch>
        <Footer />
     </div>
