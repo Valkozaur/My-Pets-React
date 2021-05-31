@@ -34,7 +34,7 @@ class Categories extends Component{
         return (
             <section className="dashboard">
             <h1>Dashboard</h1>
-    
+            
             <CategoryNavigation />
             <ul className="other-pets-list">
                 {this.state.pets.map(x =>

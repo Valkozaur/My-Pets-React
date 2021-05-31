@@ -17,16 +17,26 @@ class OtherPetDetails extends Component {
   componentDidMount() {
     petService
       .getOne(this.props.match.params.petId)
-      .then((res) => this.setState({ pet: res }));
+      .then((res) =>
+        this.setState(
+          {
+            pet: res,
+            likes: res.likes
+          }))
   }
 
-  givePet() {
-    let currentLikes = Number(this.state.pet.likes) + 1;
-    
-    this.setState({likes: currentLikes}, function () {
-        petService.givePet(this.state.pet.id, currentLikes);
+  async givePet() {
+    let likesPlusOne = this.state.likes + 1;
 
-    });
+    await petService.givePet(this.state.pet.id, likesPlusOne)
+    let pet = await petService
+      .getOne(this.props.match.params.petId)
+    
+
+    this.setState({
+      pet: pet, 
+      likes: pet.likes
+    })
   }
 
   render() {

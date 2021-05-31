@@ -7,12 +7,15 @@ export function getAll(category = "") {
   return fetch(petsUrl).then((res) => res.json());
 }
 
-export function getOne(id) {
-  return fetch(url + `/${id}`).then((res) => res.json());
+export async function getOne(id) {
+  
+  let res = await fetch(url + `/${id}`);
+
+  return await res.json();
 }
 
-export function givePet(id, likes) {
-  fetch(url + `/${id}`, {
+export async function givePet(id, likes) {
+  return await fetch(url + `/${id}`, {
     method: "PATCH",
     headers: {
       "Content-type": "application/json",
